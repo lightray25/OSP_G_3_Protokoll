@@ -3,7 +3,7 @@ include 'header.html'; ?>
             <div id="content">
                 <div class="Formbericht">
                     <div class="login">    
-                        <form id="login" method="get" action="login.php">  
+                        <form id="login" method="post" action="login.php">  
                             <label><b>User Name</b></label>    
                             <input type="text" name="Uname" id="Uname" placeholder="Username">    
                             <br><br>    

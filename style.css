@@ -25,6 +25,10 @@ nav{
     font-size: 25px;
 }
 
+nav a{
+    color: antiquewhite !important;
+}
+
 section{
     background-color: white;
     max-width: 96%;
@@ -33,6 +37,15 @@ section{
     margin-left: 2%;
     margin-top: 2%;
 }
+
+.border-0{
+    border: 0px;
+    width: 250px;
+}
+.border-0:focus-visible{
+    outline: 0px;
+}
+
 
 input{
     border-style: ridge;
@@ -44,6 +57,13 @@ textarea{
     border-radius: 5px;
     max-width: 100%;
 
+}
+#gso_logo{
+    text-align: right;
+}
+
+#FixedInfo{
+    text-align: right;
 }
 
 #header{
@@ -63,23 +83,148 @@ textarea{
     background-color: #5b9bd5;
 }
 
+.headline {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.subheadline{
+    font-weight: 700;
+}
+
+#redBar {
+    margin: 0;
+    padding: 0;
+    height: 40px;
+    background-color: red;
+    }
+
+#Protokoll{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 50px;
+}
+
+#Protokoll p{
+    float: left;
+    color: White;
+    font-size: 20px;
+    padding: 3 0 0 80px;
+    font-weight: 600;
+}
+
+#showSnippets{
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 7px;
+    width: 120px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 3px;
+    float: left;
+    margin-left: 10px;
+}
+
+.eachSnippet{
+    color: black;
+    background-color: white;
+    border-color: black;
+    border: 1px;
+    border-style: solid;
+    padding: 7px;
+    width: 180px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 3px;
+    float: left;
+    margin: 10px;
+}
+
+#snippets{
+    position: absolute;
+    border-color: black;
+    border: 1px;
+    border-style: solid;
+    z-index: 5;
+    background-color: #5b9bd5;
+    width: 200px;
+    top: 60%;
+    opacity: 0;
+    border-radius: 3px;
+    border-right: 0px;
+}
+
+#snippets.opened{
+    right: 0px;
+    opacity: 1;
+}
+.addedFields{
+    text-align: left;
+}
+
+.textareas{
+    height: 150px;
+    width: 700px;
+}
+
+.font-fix{
+    font-size: 16px;
+}
+
+.divtextareas{
+    text-align: left;
+}
+
 .greeting{
     position: absolute;
     right: 20px;
 }
 
+.padding-top3{
+    padding-top: 3px;
+}
+
 .float-left{
     float: left;
+}
+.w1k{
+    width: 1000px;
 }
 
 .pt-20{
     padding-top: 20px;
 }
 
+.pl-20{
+    padding-left: 20px;
+}
+
 .pb-20{
     padding-bottom: 20px;
 }
 
+.width-100{
+    width: 100px !important;
+}
+
+.h-20{
+    height: 20px
+}
+.w-150{
+    width: 150px;
+}
+
+.w-230{
+    width:230px;
+}
+
+.w-700{
+    width:700px;
+}
 .Formbericht{
     padding: 50px;
     background-image: url('img/login_screen.jpg');
