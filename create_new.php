@@ -41,7 +41,7 @@ include 'header.html'; ?>
                     <div id ="addedFields" class="addedFields"></div>
             </form>
             <div class="pl-20">
-                        <input type="button" onclick="GeneratePdf();"  class="btn btn-primary float-left pl-20" value="Fertigstellen" ><div id ="showSnippets">Textbausteine</div><br>
+                        <input type="button" onclick="GeneratePdf();"  class="btn btn-primary float-left pl-20" value="Fertigstellen"><div id ="showSnippets">Textbausteine</div><br>
                     </div>
             <br><br>
             <div id="snippets">

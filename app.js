@@ -56,7 +56,12 @@ document.getElementById('addPoint').addEventListener('click', function () {
         addPointLimiter = 1;
     }
     AreaTop= addPointLimiter + "TopArea";
-    document.getElementById('addedFields').insertAdjacentHTML("beforeend",'<div class="pt-5"><input type="text" class="border-0 pl-20 float-left w-700 subheadline" id="'+addPointLimiter+'Top" name="" value="'+addPointLimiter+'. Tagesordnungspunkt"> <br><br></div><div class="divtextareas"><textarea rows="10" col="500" id="'+addPointLimiter+'TopArea" class="border-0 textareas pl-20"></textarea><br></div>');
+    if (addPointLimiter == 1){
+       document.getElementById('addedFields').insertAdjacentHTML("beforeend",'<div class="pt-5"><input type="text" class="border-0 pl-20 float-left w-700 subheadline" id="'+addPointLimiter+'Top" name="" value="'+addPointLimiter+'. Begrüßung und Regularien"> <br><br></div><div class="divtextareas"><textarea rows="10" col="500" id="'+addPointLimiter+'TopArea" class="border-0 textareas pl-20"></textarea><br></div>');
+    }
+    else{
+        document.getElementById('addedFields').insertAdjacentHTML("beforeend",'<div class="pt-5"><input type="text" class="border-0 pl-20 float-left w-700 subheadline" id="'+addPointLimiter+'Top" name="" value="'+addPointLimiter+'. Tagesordnungspunkt"> <br><br></div><div class="divtextareas"><textarea rows="10" col="500" id="'+addPointLimiter+'TopArea" class="border-0 textareas pl-20"></textarea><br></div>');
+    }
     addPointLimiter += 1;
     document.getElementById(AreaTop).addEventListener('click', function () {
         onMouseDown(); 
@@ -74,8 +79,26 @@ document.getElementById('misc').addEventListener('click', function () {
 });
 
 
-function GeneratePdf() {
-    console.log('test');
+function GeneratePdf() {      
+    var date = new Date();
+    date.yyyymmdd();
+    console.log();
     var element = document.getElementById('FormProtokoll');
-    html2pdf(element);
+    html2pdf(element, {
+        filename: date.yyyymmdd()+" Protokoll " + document.getElementById("Konferenz").value + ".pdf"
+    });
 }
+
+Date.prototype.yyyymmdd = function() {
+    var mm = this.getMonth() + 1; // getMonth() is zero-based
+    var dd = this.getDate();
+    var yyyy = this.getFullYear();
+    var date = yyyy + '.' + mm + '.'+ dd
+    console.log(mm + '.'+ dd + '.'+ yyyy)
+  
+    return [/* this.getFullYear(),
+            (mm>9 ? '' : '0') + mm, 
+            (dd>9 ? '' : '0') + dd,
+           ].join(''); */
+        date]
+  };

@@ -203,6 +203,7 @@ tr.border_bottom td {
     width: 200px;
     top: 60%;
     opacity: 0;
+    right: 0px;
     border-radius: 3px;
     border-right: 0px;
 }
