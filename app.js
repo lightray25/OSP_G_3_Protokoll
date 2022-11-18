@@ -7,6 +7,19 @@ var voteLastLimiter = 0;
 var miscLimiter = 0;
 var snippetTop = 60;
 var test = "addedFields" + addPointLimiter;
+var AreaTop= addPointLimiter + "TopArea";
+var AreaMisc = miscLimiter+ "miscArea";
+var activeTextarea;
+var startPos;
+var endPos;
+var area;
+
+function onMouseDown(e) {
+    activeTextarea = document.activeElement;
+    startPos = activeTextarea.selectionStart;
+    endPos = activeTextarea.selectionEnd;
+    area = activeTextarea.id;
+}
 
 
 document.getElementById('showSnippets').addEventListener('click', function () {
@@ -22,72 +35,47 @@ document.getElementById('showSnippets').addEventListener('click', function () {
 });
 
 document.getElementById('invites').addEventListener('click', function () {
-    if (invitesLimiter == 0){
-        document.getElementById('addedFields').innerHTML+='<div class="pt-5"><input type="text" class="border-0 pl-20 float-left w-700 subheadline" id="invitesHeadline" name="" value="Zeitgerechte Einladung"> <br><br></div>'
-        document.getElementById('addedFields').innerHTML+= '<div class="divtextareas"><textarea rows="10" col="500"  class="border-0 textareas pl-20 id="invitesText">Teilnehmer hier</textarea><br></div>';
-        invitesLimiter =1;
-        document.getElementById('invites').style.backgroundColor = "#abb8c3";
+        activeTextarea.value = activeTextarea.value.substring(0, startPos)
+            + "(XX) stellt fest, dass fristgerecht eingeladen wurde."
+            + activeTextarea.value.substring(endPos, activeTextarea.value.length);
         document.getElementById('snippets').style.top = snippetTop+20+"%"
-    }
+    
 });
 
 document.getElementById('vote').addEventListener('click', function () {
-    if (voteLimiter == 0){
-        document.getElementById('addedFields').innerHTML+= '<div class="pt-5"><input type="text" class="border-0 pl-20 float-left w-700 subheadline" id="votesHeadline" name="" value="Abstimmung zu Tagesordnungspunkt XX: "> <br><br></div>'
-        document.getElementById('addedFields').innerHTML+= '<input type="text" class="border-0 h-20 w-150 pl-20" id="agreeLabel" name="" value="Zustimmung:" readonly>';
-        document.getElementById('addedFields').innerHTML+= '<input type="text" class="border-0 h-20 w-150 " id="agree" name="" value=""><br>';
-        document.getElementById('addedFields').innerHTML+= '<input type="text" class="border-0 h-20 w-150 pl-20" id="againstLabel" name="" value="Gegenstimme:" readonly>';
-        document.getElementById('addedFields').innerHTML+= '<input type="text" class="border-0 h-20 w-150 " id="against" name="" value=""><br>';
-        document.getElementById('addedFields').innerHTML+= '<input type="text" class="border-0 h-20 w-150 pl-20" id="abstentionLabel" name="" value="Enthaltung:" readonly>';
-        document.getElementById('addedFields').innerHTML+= '<input type="text" class="border-0 h-20 w-150 " id="abstention" name="" value=""><br></br>';
-        voteLimiter = 1;
-        document.getElementById('vote').style.backgroundColor = "#abb8c3";
-    }
+        activeTextarea.value = activeTextarea.value.substring(0, startPos)
+        + "\nZustimmungen: \n"
+        + "Gegenstimmen: \n"
+        + "Enthaltungen: \n"
+        + activeTextarea.value.substring(endPos, activeTextarea.value.length);
 });
-
-document.getElementById('pointVote').addEventListener('click', function () {
-    if (pointVoteLimiter == 0){
-        document.getElementById('addedFields').innerHTML+='<div class="pt-5"><input type="text" class="border-0 pl-20 float-left w-700 subheadline" id="votesHeadline" name="" value="Tagesordnung Abstimmung: "> <br><br></div>'
-        document.getElementById('addedFields').innerHTML+= '<input type="text" class="border-0 h-20 w-150 pl-20" id="pointagreeLabel" name="" value="Zustimmung:" readonly>';
-        document.getElementById('addedFields').innerHTML+= '<input type="text" class="border-0 h-20 w-150 " id="pointagree" name="" value=""><br>';
-        document.getElementById('addedFields').innerHTML+= '<input type="text" class="border-0 h-20 w-150 pl-20" id="pointagainstLabel" name="" value="Gegenstimme:" readonly>';
-        document.getElementById('addedFields').innerHTML+= '<input type="text" class="border-0 h-20 w-150 " id="pointagainst" name="" value=""><br>';
-        document.getElementById('addedFields').innerHTML+= '<input type="text" class="border-0 h-20 w-150 pl-20" id="pointabstentionLabel" name="" value="Enthaltung:" readonly>';
-        document.getElementById('addedFields').innerHTML+= '<input type="text" class="border-0 h-20 w-150 " id="pointabstention" name="" value=""><br></br>';
-        pointVoteLimiter = 1;
-        document.getElementById('pointVote').style.backgroundColor = "#abb8c3";
-    }
-});
-
-document.getElementById('voteLast').addEventListener('click', function () {
-    if (voteLastLimiter == 0){
-        document.getElementById('addedFields').innerHTML+='<div class="pt-5"><input type="text" class="border-0 pl-20 float-left w-700 subheadline" id="votesHeadline" name="" value="Abstimmung letztes Protokoll : "> <br><br></div>'
-        document.getElementById('addedFields').innerHTML+= '<input type="text" class="border-0 h-20 w-150 pl-20" id="agreeLastLabel" name="" value="Zustimmung:" readonly>';
-        document.getElementById('addedFields').innerHTML+= '<input type="text" class="border-0 h-20 w-150 " id="agreeLast" name="" value=""><br>';
-        document.getElementById('addedFields').innerHTML+= '<input type="text" class="border-0 h-20 w-150 pl-20" id="againstLastLabel" name="" value="Gegenstimme:" readonly>';
-        document.getElementById('addedFields').innerHTML+= '<input type="text" class="border-0 h-20 w-150 " id="againsLastt" name="" value=""><br>';
-        document.getElementById('addedFields').innerHTML+= '<input type="text" class="border-0 h-20 w-150 pl-20" id="abstentionLastLabel" name="" value="Enthaltung:" readonly>';
-        document.getElementById('addedFields').innerHTML+= '<input type="text" class="border-0 h-20 w-150 " id="abstentionLast" name="" value=""><br></br>';
-        voteLastLimiter = 1;
-        document.getElementById('voteLast').style.backgroundColor = "#abb8c3";
-    }
-});
-
-
 
 document.getElementById('addPoint').addEventListener('click', function () {
     if (addPointLimiter == 0){
-        document.getElementById('addedFields').innerHTML+='<div class="pt-5"><input type="text" class="border-0 pl-20 float-left w-700 Headline" id="TOP" name="" value="Tagesordnungspunkte:" readonly><br></div>'
+        document.getElementById('addedFields').insertAdjacentHTML("beforeend",'<div class="pt-5"><input type="text" class="border-0 pl-20 float-left w-700 Headline" id="TOP" name="" value="Tagesordnungspunkte:" readonly><br></div>');
         addPointLimiter = 1;
     }
-    document.getElementById('addedFields').insertAdjacentHTML("beforeend",'<div class="pt-5"><input type="text" class="border-0 pl-20 float-left w-700 subheadline" id="'+addPointLimiter+'Top" name="" value="'+addPointLimiter+'. Tagesordnungspunkt"> <br><br></div><div class="divtextareas"><textarea rows="10" col="500"  class="border-0 textareas pl-20">Begrüßung der Anwesenden durch FR XXX Ordnungsgemäße Einladung wird festgestelltXXX Annahme der Tagesordnung</textarea><br></div>');
+    AreaTop= addPointLimiter + "TopArea";
+    document.getElementById('addedFields').insertAdjacentHTML("beforeend",'<div class="pt-5"><input type="text" class="border-0 pl-20 float-left w-700 subheadline" id="'+addPointLimiter+'Top" name="" value="'+addPointLimiter+'. Tagesordnungspunkt"> <br><br></div><div class="divtextareas"><textarea rows="10" col="500" id="'+addPointLimiter+'TopArea" class="border-0 textareas pl-20"></textarea><br></div>');
     addPointLimiter += 1;
+    document.getElementById(AreaTop).addEventListener('click', function () {
+        onMouseDown(); 
+    });
 });
 
 document.getElementById('misc').addEventListener('click', function () {
-    if (miscLimiter >= 0){
-        document.getElementById('addedFields').innerHTML+='<div class="pt-5"><input type="text" class="border-0 pl-20 float-left w-700 subheadline" id="miscHeadline" name="" value="Verschiedenes/Notizen :"> <br><br></div>'
-        document.getElementById('addedFields').innerHTML+= '<div class="divtextareas"><textarea rows="10" col="500"  class="border-0 textareas pl-20 id="miscText">Notizen hierr</textarea><br></div>';
-        miscLimiter =1;
-    }
+        document.getElementById('addedFields').insertAdjacentHTML("beforeend",'<div class="pt-5"><input type="text" class="border-0 pl-20 float-left w-700 subheadline" id="miscHeadline" name="" value="Verschiedenes/Notizen :"> <br><br></div>');
+        document.getElementById('addedFields').insertAdjacentHTML("beforeend",'<div class="divtextareas"><textarea rows="10" col="500" id="'+miscLimiter+'miscArea"  class="border-0 textareas pl-20">Notizen hierr</textarea><br></div>');
+        AreaMisc = miscLimiter+ "miscArea";
+        miscLimiter += 1;
+        document.getElementById(AreaMisc).addEventListener('click', function () {
+            onMouseDown(); 
+        });
 });
+
+
+function GeneratePdf() {
+    console.log('test');
+    var element = document.getElementById('FormProtokoll');
+    html2pdf(element);
+}

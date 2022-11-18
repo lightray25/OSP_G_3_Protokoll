@@ -1,10 +1,12 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.1/html2pdf.bundle.min.js" integrity="sha512-vDKWohFHe2vkVWXHp3tKvIxxXg0pJxeid5eo+UjdjME3DBFBn2F8yWOE0XmiFcFbXxrEOR1JriWEno5Ckpn15A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <?php
 include 'header.html'; ?>
     <div id="content">
         <div id="Protokoll">
+            <form id="FormProtokoll" name="FormProtokoll" enctype="text/plain">
             <div id="redBar"> <p>Stadt Köln</p> </div>
             <div id="gso_logo"><img src="img/gso_logo.jpg"></div>
-            <form id="FormProtokoll">
                 <div id="FixedInfo">
                     <input type="text" class="border-0" id="Info" name="" value="Berufskolleg –Sekundarstufe II" readonly><br>
                     <input type="text" class="border-0" id="Info2" name="" value="Berufliches Gymnasium" readonly><br>
@@ -37,17 +39,15 @@ include 'header.html'; ?>
                         <input type="text" class="border-0 float-left h-20 width-100 " id="Participants" name="" value=""><br>
                     </div> 
                     <div id ="addedFields" class="addedFields"></div>
-                    <div id ="addedFields1" class="addedFields1"></div>
-                    <div class="pl-20">
-                        <button type="submit" class="btn btn-primary float-left pl-20">Fertigstellen</button><div id ="showSnippets">Textbausteine</div><br>
-                    </div>
             </form>
+            <div class="pl-20">
+                        <input type="button" onclick="GeneratePdf();"  class="btn btn-primary float-left pl-20" value="Fertigstellen" ><div id ="showSnippets">Textbausteine</div><br>
+                    </div>
+            <br><br>
             <div id="snippets">
                 <div id="addPoint" class="eachSnippet">Tagesordnungspunkt hinzufügen</div>
                 <div id="invites" class="eachSnippet">Fristgerecht Eingeladen</div>
-                <div id="vote" class="eachSnippet">Abstimmung zu Tagesordnung</div>
-                <div id="pointVote" class="eachSnippet">Tagesordnung Abstimmung</div>
-                <div id="voteLast" class="eachSnippet">Abstimmung letztes Protokoll</div>
+                <div id="vote" class="eachSnippet">Abstimmung<br>Einfügen</div>
                 <div id="misc" class="eachSnippet">Verschiedenes Hinzufügen</div>
             </div>
         </div>
